@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         Object.keys(options).forEach(option => {
             const btn = document.createElement("button");
-            btn.className = "btn btn-outline-primary option-button";
+            btn.className = "btn btn-outline-primary  option-button btn-custom-grey";
             btn.textContent = option;
             btn.addEventListener("click", () => handleOptionClick(option, options[option]));
             wrapper.appendChild(btn);
@@ -72,17 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
         yesBtn.className = "btn btn-success option-button";
         yesBtn.textContent = "Yes, I'm satisfied";
         yesBtn.onclick = () => {
-            appendMessage("Thank you for connecting with SciPris Aptara.", "bot");
+            appendMessage("Yes, I'm satisfied", "user"); // Show user reply
+            appendMessage("Thank you for connecting with SciPrisAptara.", "bot"); // Bot reply
             appendMessage("Hi! How can I help you today?", "bot");
-            renderOptions(botTree); // Restart the options
+            renderOptions(botTree); // Restart options
         };
 
+        // to change logic
         const supportBtn = document.createElement("button");
         supportBtn.className = "btn btn-warning option-button";
         supportBtn.textContent = "No, Connect with the Support Team";
         supportBtn.onclick = () => {
+            appendMessage("No, Connect with Support Team", "user"); // Show user reply
             appendMessage("Connecting you to our support team...", "bot");
-            window.location.href = "/support/"; // or handle live support as needed
+            window.location.href = "/support/"; // to change 
         };
     
         wrapper.appendChild(yesBtn);
