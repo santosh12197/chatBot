@@ -71,16 +71,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const yesBtn = document.createElement("button");
         yesBtn.className = "btn btn-success option-button";
         yesBtn.textContent = "Yes, I'm satisfied";
-        yesBtn.onclick = () => appendMessage("Thank you for connecting with SciPrisAptara.", "bot");
+        yesBtn.onclick = () => {
+            appendMessage("Thank you for connecting with SciPris Aptara.", "bot");
+            appendMessage("Hi! How can I help you today?", "bot");
+            renderOptions(botTree); // Restart the options
+        };
 
         const supportBtn = document.createElement("button");
         supportBtn.className = "btn btn-warning option-button";
-        supportBtn.textContent = "No, Connect with Support Team";
-        supportBtn.onclick = () => window.location.href = "/support/";
-
+        supportBtn.textContent = "No, Connect with the Support Team";
+        supportBtn.onclick = () => {
+            appendMessage("Connecting you to our support team...", "bot");
+            window.location.href = "/support/"; // or handle live support as needed
+        };
+    
         wrapper.appendChild(yesBtn);
         wrapper.appendChild(supportBtn);
         chatContainer.appendChild(wrapper);
+        scrollToBottom();
     }
 
     function appendMessage(text, sender) {
